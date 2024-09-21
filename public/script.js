@@ -28,11 +28,9 @@ async function sendMessage() {
         const response = await axios.post('http://localhost:3000/chat', { prompt: inputString });
         let answer = response.data.result;
         answer = JSON.parse(answer.split('"parts": [')[1].split(`"role": "model"`)[0].split('],')[0]);
-        answer = answer.text;
-        paraAi.innerHTML = answer;
-        paraAi.className="ai"
+        paraAi.innerHTML=answer.text;
+        paraAi.className="ai";
         answerBox.append(paraAi);
-        scrollToBottom();
     } catch (error) {
         console.error('Error:', error);
     } finally {
